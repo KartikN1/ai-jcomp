@@ -26,7 +26,7 @@ INIT_LR = 1e-4
 EPOCHS = 20
 BS = 32
 
-DIRECTORY = r"C:\Mask Detection\CODE\Face-Mask-Detection-master\dataset"
+DIRECTORY = r"dataset"
 CATEGORIES = ["with_mask", "without_mask"]
 
 # grab the list of images in our dataset directory, then initialize
@@ -119,8 +119,8 @@ print(classification_report(testY.argmax(axis=1), predIdxs,
 	target_names=lb.classes_))
 
 # serialize the model to disk
-print("[INFO] saving mask detector model...")
-model.save("mask_detector.model", save_format="h5")
+# print("[INFO] saving mask detector model...")
+# model.save("mask_detector.model", save_format="h5")
 
 # plot the training loss and accuracy
 N = EPOCHS

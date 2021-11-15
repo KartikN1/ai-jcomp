@@ -9,6 +9,13 @@ import time
 import cv2
 import os
 
+#Devs
+#Shivam Singhal
+#Kartik Nahta
+#Arshdeep Bhatia
+#Arpit Khandelwal
+
+
 def detect_and_predict_mask(frame, faceNet, maskNet):
 	# grab the dimensions of the frame and then construct a blob
 	# from it
@@ -72,16 +79,26 @@ def detect_and_predict_mask(frame, faceNet, maskNet):
 	return (locs, preds)
 
 # load our serialized face detector model from disk
-prototxtPath = r"/Users/kartiknahta/Desktop/ai-jcomp-main/face_detector/deploy.prototxt"
-weightsPath = r"/Users/kartiknahta/Desktop/ai-jcomp-main/face_detector/res10_300x300_ssd_iter_140000.caffemodel"
+prototxtPath = r"face_detector/deploy.prototxt"
+weightsPath = r"face_detector/res10_300x300_ssd_iter_140000.caffemodel"
 faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 
 # load the face mask detector model from disk
 maskNet = load_model("mask_detector.model")
 
 # initialize the video stream
+
+# vs = VideoStream(src=0).start()
+# vs = VideoStream(src='video.mp4').start()
+
+a = int(input("Enter 0/1 (Recorded Video/ Live Stream ::"))
 print("[INFO] starting video stream...")
-vs = VideoStream(src=0).start()
+if(a==1):
+	# print("[INFO] starting video stream...")
+    vs = VideoStream(src=0).start()
+else:
+	# print("[INFO] starting video stream...")
+    vs = VideoStream(src='video.mp4').start()
 
 # loop over the frames from the video stream
 while True:
